@@ -9,7 +9,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "outDir": "./public/js",
+    "outDir": "./assets/js",
     "rootDir": "./src",
     "baseUrl": ".",
     "paths": {
