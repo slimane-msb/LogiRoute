@@ -1,0 +1,20 @@
+{
+  "name": "logistics-routing",
+  "version": "1.0.0",
+  "description": "Route Optimization — Real-Time Multi-Address Routing on Road Networks",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "deploy": "npm run build && gh-pages -d public/js"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.9.8",
+    "gh-pages": "^6.1.0",
+    "rollup": "^4.57.1",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4"
+  }
+}
