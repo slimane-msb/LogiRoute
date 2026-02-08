@@ -1,6 +1,6 @@
+import { Graph, TSPResult } from "../../utils/types";
 
-import { Graph, Node, TSPResult } from "../../utils/types";
-import { shortestPath } from "../shortest path/chosen_algo"; 
+
 
 /**
  * 2-opt swap: reverse segment between i and k
@@ -23,16 +23,16 @@ function tourDistance(order: number[], dist: number[][]): number {
 }
 
 /**
- * 2-opt local search / Lin–Kernighan style TSP
+ * Nearest Neighbor + 2-opt TSP
  */
-export function twoOptTSP(
+export function nearestNeighbor2OptTSP(
   graph: Graph,
   targets: string[],
   shortestPathFunc: (graph: Graph, from: string, to: string) => { distance: number; path: string[] }
 ): TSPResult {
   const n = targets.length;
 
-  // 1. Compute distance matrix and path segments between targets
+  // 1. Compute distance matrix and path segments
   const dist: number[][] = Array.from({ length: n }, () => Array(n).fill(Infinity));
   const paths: string[][][] = Array.from({ length: n }, () => Array.from({ length: n }, () => []));
 
@@ -45,7 +45,7 @@ export function twoOptTSP(
     }
   }
 
-  // 2. Initial tour (nearest neighbor)
+  // 2. Initial tour using Nearest Neighbor
   const order: number[] = [];
   const visited = new Set<number>();
   let current = 0;
@@ -66,7 +66,7 @@ export function twoOptTSP(
     visited.add(current);
   }
 
-  // 3. 2-opt local search
+  // 3. Apply 2-opt improvement
   let improved = true;
   while (improved) {
     improved = false;
@@ -81,7 +81,7 @@ export function twoOptTSP(
     }
   }
 
-  // 4. Build full road path
+  // 4. Build full road-level path
   const fullPath: string[] = [];
   for (let i = 0; i < n - 1; i++) {
     const a = order[i];
