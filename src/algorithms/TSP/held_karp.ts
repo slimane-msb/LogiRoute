@@ -2,7 +2,7 @@ import { Graph, TSPResult, Node } from "../../utils/types";
 import { shortestPath } from "../shortest path/chosen_algo";
 
 
-export function heldKarpTSP(
+ function heldKarpTSP(
     graph: Graph,
     targets: string[],
     shortestPath: (
@@ -129,3 +129,7 @@ export function heldKarpTSP(
     };
 }
   
+
+export{
+  heldKarpTSP
+}

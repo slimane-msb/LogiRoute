@@ -25,7 +25,7 @@ function tourDistance(order: number[], dist: number[][]): number {
 /**
  * 2-opt local search / Lin–Kernighan style TSP
  */
-export function twoOptTSP(
+ function twoOptTSP(
   graph: Graph,
   targets: string[],
   shortestPathFunc: (graph: Graph, from: string, to: string) => { distance: number; path: string[] }
@@ -98,4 +98,9 @@ export function twoOptTSP(
   const distance = tourDistance(order, dist);
 
   return { order: resultOrder, path: fullPath, distance };
+}
+
+
+export{
+  twoOptTSP
 }

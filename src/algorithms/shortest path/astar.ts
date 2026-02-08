@@ -2,7 +2,7 @@ import Heap from "heap";
 import { Graph } from "../../utils/types";
 import { getDistance } from "../../utils/distance";
 
-export function astar(
+function astar(
   graph: Graph,
   start: string,
   end: string
@@ -76,4 +76,9 @@ export function astar(
   }
 
   return { distance: gScore[end], path };
+}
+
+
+export{
+  astar
 }

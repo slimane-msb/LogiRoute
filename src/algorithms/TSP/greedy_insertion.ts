@@ -15,7 +15,7 @@ function tourDistance(order: number[], dist: number[][]): number {
 /**
  * Greedy Insertion / Cheapest Insertion TSP
  */
-export function greedyInsertionTSP(
+function greedyInsertionTSP(
   graph: Graph,
   targets: string[],
   shortestPathFunc: (graph: Graph, from: string, to: string) => { distance: number; path: string[] }
@@ -80,4 +80,9 @@ export function greedyInsertionTSP(
   const distance = tourDistance(order, dist);
 
   return { order: resultOrder, path: fullPath, distance };
+}
+
+
+export{
+  greedyInsertionTSP
 }

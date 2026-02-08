@@ -23,7 +23,7 @@ function shuffle<T>(arr: T[]): T[] {
 /**
  * Genetic Algorithm for TSP
  */
-export function metaheuristics(
+function metaheuristics(
   graph: Graph,
   targets: string[],
   shortestPathFunc: (graph: Graph, from: string, to: string) => { distance: number; path: string[] },
@@ -128,4 +128,9 @@ export function metaheuristics(
   const distance = bestDist;
 
   return { order: resultOrder, path: fullPath, distance };
+}
+
+
+export{
+  metaheuristics
 }

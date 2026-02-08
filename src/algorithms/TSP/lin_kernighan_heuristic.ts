@@ -22,7 +22,7 @@ function tourDistance(order: number[], dist: number[][]): number {
 /**
  * Lin-Kernighan heuristic simplified for TypeScript
  */
-export function linKernighanTSP(
+function linKernighanTSP(
   graph: Graph,
   targets: string[],
   shortestPathFunc: (graph: Graph, from: string, to: string) => { distance: number; path: string[] }
@@ -118,4 +118,9 @@ export function linKernighanTSP(
   const distance = tourDistance(order, dist);
 
   return { order: resultOrder, path: fullPath, distance };
+}
+
+
+export{
+  linKernighanTSP
 }

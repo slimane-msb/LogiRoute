@@ -1,2 +1,0 @@
-// Type Definitions
-export {};

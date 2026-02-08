@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "target": "ES6",
     "lib": ["ES2020", "DOM"],
     "moduleResolution": "node",
     "strict": true,

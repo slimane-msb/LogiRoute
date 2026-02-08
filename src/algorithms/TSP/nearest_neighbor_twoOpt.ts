@@ -25,7 +25,7 @@ function tourDistance(order: number[], dist: number[][]): number {
 /**
  * Nearest Neighbor + 2-opt TSP
  */
-export function nearestNeighbor2OptTSP(
+function nearestNeighbor2OptTSP(
   graph: Graph,
   targets: string[],
   shortestPathFunc: (graph: Graph, from: string, to: string) => { distance: number; path: string[] }
@@ -98,4 +98,9 @@ export function nearestNeighbor2OptTSP(
   const distance = tourDistance(order, dist);
 
   return { order: resultOrder, path: fullPath, distance };
+}
+
+
+export{
+  nearestNeighbor2OptTSP
 }
