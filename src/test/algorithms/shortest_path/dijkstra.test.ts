@@ -37,6 +37,7 @@ describe("Dijkstra shortest path tests", () => {
     expect(result.path[0]).toBe(start);
     expect(result.path[result.path.length - 1]).toBe(end);
     expect(result.distance).toBeGreaterThan(0);
+    expect(result.distance).toBeLessThan(9999);
   });
 
 }, 300000);
@@ -69,6 +70,7 @@ describe("dijkstraHeap shortest path tests", () => {
       expect(result.path[0]).toBe(start);
       expect(result.path[result.path.length - 1]).toBe(end);
       expect(result.distance).toBeGreaterThan(0);
+      expect(result.distance).toBeLessThan(9999);
     });
   
   }, 300000);

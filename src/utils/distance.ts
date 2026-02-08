@@ -1,6 +1,6 @@
 import { Point, Node} from "./types";
 
-// Helper function (from utils.ts)
+// haversine : Helper function 
 function getDistance(point1: Point, point2: Point): number {
   const R = 6371e3; // Earth's radius in meters
   const lat1 = point1.lat;
