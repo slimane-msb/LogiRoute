@@ -1,19 +1,18 @@
-// utils
-import './utils/distance';
-import './utils/graph_loader';
-import './utils/types';
+// Export all utilities
+export * from './utils/distance';
+export { loadGraphAsync, load_city_graph } from './utils/graph_loader';
 
-// Algorithms - Shortest Path
-import './algorithms/shortest path/astar';
-import './algorithms/shortest path/chosen_algo';
-import './algorithms/shortest path/dijkstra';
-import './algorithms/shortest path/greedyBestFirstSearch';
+// Export shortest path algorithms
+export * from './algorithms/shortest path/dijkstra';
+export * from './algorithms/shortest path/astar';
+export * from './algorithms/shortest path/greedyBestFirstSearch';
+export * from './algorithms/shortest path/chosen_algo';
 
-// Algorithms - TSP
-import './algorithms/TSP/chosen_tsp';
-import './algorithms/TSP/greedy_insertion';
-import './algorithms/TSP/held_karp';
-import './algorithms/TSP/lin_kernighan_heuristic';
-import './algorithms/TSP/metaheuristics';
-import './algorithms/TSP/nearest_neighbor_twoOpt';
-import './algorithms/TSP/TwoOpt_Lin_Kernighan';
+// Export TSP algorithms
+export * from './algorithms/TSP/greedy_insertion';
+export * from './algorithms/TSP/held_karp';
+export * from './algorithms/TSP/lin_kernighan_heuristic';
+export * from './algorithms/TSP/metaheuristics';
+export * from './algorithms/TSP/nearest_neighbor_twoOpt';
+export * from './algorithms/TSP/TwoOpt_Lin_Kernighan';
+export * from './algorithms/TSP/chosen_tsp';

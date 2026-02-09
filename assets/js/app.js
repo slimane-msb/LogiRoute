@@ -42,7 +42,13 @@ async function visualizePath() {
 
     try {
         updateStatus('Loading city graph...');
-        const graph = await load_city_graph('paris'); // Change to 'dublin' if needed (TODO)
+        
+        // Load graph using fetch
+        const graph = await loadGraphAsync(
+            './data/paris_nodes.json',
+            './data/paris_edges.json',
+            './data/paris_adjacency.json'
+        );
 
         // Find nearest nodes for all locations
         updateStatus('Finding nearest road nodes...');
@@ -57,20 +63,46 @@ async function visualizePath() {
             return;
         }
 
+        // Get target node IDs
+        const targetNodeIds = targetNodes.map(node => node.id);
+
+        // Get selected algorithms
+        const shortestPathAlgo = document.getElementById('algorithmShortestPathSelect').value;
+        const tspAlgo = document.getElementById('algorithmTSPSelect').value;
+
+        // Map algorithm names to functions
+        const shortestPathFunctions = {
+            'astar': astar,
+            'dijkstra': dijkstra,
+            'GBFS': greedyBestFirstSearch
+        };
+
+        const tspFunctions = {
+            'heldKarp': heldKarpTSP,
+            'LKH': linKernighanTSP,
+            'nearest2opt': nearestNeighbor2OptTSP,
+            'optLinKer': twoOptTSP,
+            'cheapestInsertion': greedyInsertionTSP,
+            'metaheuristics': metaheuristics
+        };
+
+        const shortestPathFunc = shortestPathFunctions[shortestPathAlgo];
+        const tspFunc = tspFunctions[tspAlgo];
+
         // Run TSP to get optimal order
         updateStatus('Optimizing route order...');
-        const tspResult = await bestTSP(graph, targetNodes);
+        const tspResult = tspFunc(graph, targetNodeIds, shortestPathFunc);
         
         // Reorder locations and markers based on TSP result
         const nodeToLocationIndex = new Map();
-        targetNodes.forEach((node, idx) => nodeToLocationIndex.set(node, idx));
+        targetNodeIds.forEach((nodeId, idx) => nodeToLocationIndex.set(nodeId, idx));
         
         const reorderedLocations = tspResult.order.map(nodeId => {
-            const idx = targetNodes.findIndex(n => n === nodeId);
+            const idx = targetNodeIds.indexOf(nodeId);
             return getLocations()[idx];
         });
         const reorderedMarkers = tspResult.order.map(nodeId => {
-            const idx = targetNodes.findIndex(n => n === nodeId);
+            const idx = targetNodeIds.indexOf(nodeId);
             return getMarkers()[idx];
         });
         

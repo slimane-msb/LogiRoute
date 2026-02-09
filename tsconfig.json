@@ -2,10 +2,11 @@
   "compilerOptions": {
     "target": "ES6",
     "lib": ["ES2020", "DOM"],
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "./assets/js",
     "rootDir": "./src",

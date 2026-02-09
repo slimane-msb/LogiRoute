@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "vitest",
-    "build": "tsc",
+    "build": "vite build",
     "deploy": "npm run build && gh-pages -d assets/js"
   },
   "devDependencies": {
